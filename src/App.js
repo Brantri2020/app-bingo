@@ -1,24 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import Bola from './componentes/Bola'
+import { useState } from 'react';
 
 function App() {
+
+  let bolas = [];
+  let filas = [];
+  for (let i = 1; i <= 90; i++) {
+
+    bolas.push(<Bola>{i}</Bola>);
+    if (i % 10 === 0) {
+      filas.push(<div className='fila'>{bolas}</div>);
+      bolas = [];
+    }
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='tablero'>
+        {filas}
+      </div>
+      <div id="bolaGrande"></div>
     </div>
+
   );
 }
 
